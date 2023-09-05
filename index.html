@@ -23,10 +23,6 @@
       rel="stylesheet"
     />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/global.css" />
-    <link rel="stylesheet" href="./assets/css/pokedex.css" />
-
     <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -55,38 +51,57 @@
       </div>
     </section>
 
-
     <!-- Button trigger modal -->
-    <button id="modalTrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-        Launch demo modal
-    </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalLabel">Bulbasaur</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+    <button
+      id="modalTrigger"
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#modal"
+    ></button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
             <li class="pokemon grass">
-                <span class="number">#1</span>
-                <span class="name">bulbasaur</span>
-    
-                <div class="detail">
-                    <ol class="types">
-                        <li class="type grass">grass</li><li class="type poison">poison</li>
-                    </ol>
-    
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="bulbasaur">
-                </div>
+              <span class="number">#1</span>
+              <span class="name">bulbasaur</span>
+
+              <div class="detail">
+                <ol class="types">
+                  <li class="type grass">grass</li>
+                  <li class="type poison">poison</li>
+                </ol>
+
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                  alt="bulbasaur"
+                />
+              </div>
             </li>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-    <script src="./assets/js/main.js"></script>
+    <!-- Bundle com JavaScript e CSS -->
+    <script src="./dist/bundle.js"></script>
   </body>
 </html>

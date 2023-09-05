@@ -1,6 +1,12 @@
 import Pokemon from "./pokemon-model"
 
 
+interface IPokemonDetail {
+
+}
+
+
+
 class PokeAPI {
     static getPokemons(offset = 0, limit = 5) {
         const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
@@ -13,18 +19,18 @@ class PokeAPI {
         .then((pokemonsDetails) => pokemonsDetails)
     }
 
-    static #getPokemonDetail(pokemon) {
+    static #getPokemonDetail(pokemon: { url: string}) {
         return fetch(pokemon.url)
         .then((response) => response.json())
         .then(PokeAPI.#convertPokeApiDetailToPokemon)
     }
 
-    static #convertPokeApiDetailToPokemon(pokeDetail) {
+    static #convertPokeApiDetailToPokemon(pokeDetail: any) {
         const pokemon = new Pokemon()
         pokemon.number = pokeDetail.id
         pokemon.name = pokeDetail.name
     
-        const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
+        const types = pokeDetail.types.map((typeSlot: any) => typeSlot.type.name)
         const [type] = types
     
         pokemon.types = types

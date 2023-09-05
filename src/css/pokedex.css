@@ -84,6 +84,7 @@
     margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
+    cursor: pointer;
 }
 
 .pokemon .number {
@@ -164,19 +165,27 @@
     }
 }
 
+#modalTrigger {
+    display: none
+}
 
-.modal-body .pokemon .types .type {
+#modal .pokemon {
+    cursor: default;
+}
+
+#modal .pokemon .types .type {
     font-size: 1.5rem;
 }
 
-.modal-body .pokemon .number {
+#modal .pokemon .number {
     font-size: 1rem;
 }
 
-.modal-body .pokemon .name {
+#modal .pokemon .name {
     font-size: 2rem;
 }
 
-.modal-body .pokemon img{
+#modal .pokemon img{
     height: 200px;
 }
+
