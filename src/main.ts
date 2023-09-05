@@ -1,7 +1,6 @@
-
 import './css/global.css'
 import './css/pokedex.css'
-import PokeAPI from './poke-api'
+import PokeAPI from './utils/poke-api'
 
 const pokemonList = document.getElementById('pokemonList') as HTMLElement
 const loadMoreButton = document.getElementById('loadMoreButton') as HTMLElement
@@ -11,10 +10,16 @@ const limit = 10
 
 let offset = 0
 
+function loadPokemonItens(offset: number, limit: number) {
+  PokeAPI.getPokemons(offset, limit).then((pokemons = []) => {
+    const pokemonElements = pokemons.map(convertPokemonToLi)
+    pokemonList.append(...pokemonElements)
+  })
+}
+
 function convertPokemonToLi(pokemon: any) {
   const pokemonElement = document.createElement('li')
 
-  pokemonElement.classList.add('pokemon', pokemon.type)
   pokemonElement.addEventListener('click', () => {
     const pokemonHTML = pokemonElement.outerHTML
     const modalBody = document.querySelector(
@@ -25,6 +30,7 @@ function convertPokemonToLi(pokemon: any) {
     document.getElementById('modalTrigger')?.click()
   })
 
+  pokemonElement.classList.add('pokemon', pokemon.type)
   pokemonElement.innerHTML = ` <span class="number">#${pokemon.number}</span>
     <span class="name">${pokemon.name}</span>
 
@@ -42,15 +48,6 @@ function convertPokemonToLi(pokemon: any) {
   return pokemonElement
 }
 
-function loadPokemonItens(offset: number, limit: number) {
-  PokeAPI.getPokemons(offset, limit).then((pokemons = []) => {
-    const pokemonElements = pokemons.map(convertPokemonToLi)
-    pokemonList.append(...pokemonElements)
-  })
-}
-
-loadPokemonItens(offset, limit)
-
 loadMoreButton.addEventListener('click', () => {
   offset += limit
   const qtdRecordsWithNexPage = offset + limit
@@ -64,3 +61,5 @@ loadMoreButton.addEventListener('click', () => {
     loadPokemonItens(offset, limit)
   }
 })
+
+loadPokemonItens(offset, limit)
