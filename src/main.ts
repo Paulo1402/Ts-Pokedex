@@ -1,6 +1,7 @@
 import './css/global.css'
 import './css/pokedex.css'
 import PokeAPI from './utils/poke-api'
+import {IPokemon} from './utils/pokemon-model'
 
 const pokemonList = document.getElementById('pokemonList') as HTMLElement
 const loadMoreButton = document.getElementById('loadMoreButton') as HTMLElement
@@ -12,12 +13,12 @@ let offset = 0
 
 function loadPokemonItens(offset: number, limit: number) {
   PokeAPI.getPokemons(offset, limit).then((pokemons = []) => {
-    const pokemonElements = pokemons.map(convertPokemonToLi)
+    const pokemonElements = pokemons.map(createPokemonElements)
     pokemonList.append(...pokemonElements)
   })
 }
 
-function convertPokemonToLi(pokemon: any) {
+function createPokemonElements(pokemon: IPokemon) {
   const pokemonElement = document.createElement('li')
 
   pokemonElement.addEventListener('click', () => {
